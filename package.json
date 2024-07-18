@@ -1,11 +1,14 @@
 {
-  "name": "ausomelang",
+  "name": "assume-lang",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"tsc --watch --outDir ./dist\" \"nodemon ./dist/index.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf ./dist",
+    "build": "tsc --outDir ./dist",
+    "watch": "concurrently \"tsc --watch --outDir ./dist\" \"nodemon ./dist/index.js\"",
+    "clean-and-compile": "npm run clean && npm run build",
+    "start": "npm run clean-and-compile && npm run watch"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +16,7 @@
   "devDependencies": {
     "concurrently": "^8.2.2",
     "nodemon": "^3.1.4",
+    "rimraf": "^6.0.1",
     "typescript": "^5.4.5"
   }
 }
